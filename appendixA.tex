@@ -1,0 +1,119 @@
+%!TEX root = dissertation.tex
+\newpage
+\appendix
+% \chapter*{Приложение А Вспомогательные матрицы}
+
+\begin{flushleft}
+  \LARGE
+  \textbf{Приложение A \\ Вспомогательные матрицы}
+\end{flushleft}
+\label{s:A}
+\setcounter{chapter}{1}
+\addcontentsline{toc}{chapter}{Приложение~\thechapter~ Вспомогательные матрицы}
+
+\section{Матрица Якоби невязкого потока и её разложение}
+Матрица Якоби невязкого потока имеет вид
+\begin{gather}
+  {\bf{A}}^t ({\bf{Q}}) = \frac{{\partial ({\bf{K}}_{\beta,\, inv}^t ({\bf{Q}}) \cdot {\bf{S}})}}{{\partial
+  {\bf{Q}}}} \!= \notag \\ =\! \left[ {\begin{array}{*{20}c}
+   0 \!&\! {\beta S_x } \!&\! {\beta S_y } \!&\! {\beta S_z }  \\
+   {S_x } \!&\! {w_1 S_x  + U_{}  - U_g } \!&\! {w_1 S_y } \!&\! {w_1 S_z }  \\
+   {S_y } \!&\! {w_2 S_x } \!&\! {w_2 S_y  + U_{}  - U_g } \!&\! {w_2 S_z }  \\
+   {S_z } \!&\! {w_3 S_x } \!&\! {w_3 S_y } \!&\! {w_3 S_z  + U_{}  - U_g }  \\
+  \end{array}} \right],
+  \label{A1} 
+\end{gather}
+где $U = {\bf{w}} \cdot {\bf{S}},\ U_g  = {\bf{x}}_t  \cdot {\bf{S}}$. 
+
+Собственные значения матрицы ${\bf{A}}^t$:
+\begin{gather}
+  \label{A2}
+  \lambda _{1,2} = U_{} - U_g , \quad \notag \\
+  \lambda _{3} = U_{} - \frac{1}{2}U_g + c, \\
+  \lambda _{4} = U_{} - \frac{1}{2}U_g - c. \notag \\
+  {\bf{D}} = Diag(\lambda_{1},\lambda_{2},\lambda_{3},\lambda_{4}),
+\end{gather}
+где $c = \sqrt {\left({U_{} -\cfrac{1}{2}U_g} \right)^2 + \beta \left( {S_x^2  + S_y^2  + S_z^2 } \right)}$.
+\begin{equation}
+  {\bf{A}}^t = {\bf{R}}\cdot{\bf{D}}\cdot{\bf{L}}.
+\end{equation}
+
+Матрица правых собственных векторов ${\bf{R}}$ имеет вид:
+\begin{equation}
+  {\bf{R}} = \left( {\begin{array}{*{20}c}
+   0 & 0 & {\beta \left( {c + U_g /2} \right)} & { - \beta \left( {c - U_g /2} \right)}  \\
+   { - S_z } & { - S_y } & {u\lambda _3  + \beta S_x } & {u\lambda _4  + \beta S_x }  \\
+   0 & {S_x } & {v\lambda _3  + \beta S_y } & {v\lambda _4  + \beta S_y }  \\
+   {S_x } & 0 & {w\lambda _3  + \beta S_z } & {w\lambda _4  + \beta S_z }  \\
+  \end{array}} \right).
+\end{equation}
+
+Матрица левых собственных векторов ${\bf{L}}={\bf{R}}^{-1}$, т.е. 
+\begin{equation}
+  {\bf{R}}\cdot{\bf{L}}={\bf{I}}.
+\end{equation}
+
+\section{Матрица Якоби вязкого потока}
+Вектор вязкого потока ${\bf{K}}_{\beta,\, vis} \cdot {\bf{S}}$ запишем в виде суммы
+\begin{equation}
+  {\bf{K}}_{\beta,\, vis} \cdot {\bf{S}} = 
+  -\nu _{\text{eff}}{\bf{G}}({\bf{Q}}_{\xi},{\bf{Q}}_{\eta},{\bf{Q}}_{\zeta}) = 
+  -\nu _{\text{eff}}\left[{\bf{G}}^1({\bf{Q}}_{\xi})+{\bf{G}}^2({\bf{Q}}_{\eta})+
+  {\bf{G}}^3({\bf{Q}}_{\zeta})\right], 
+\end{equation}
+где
+\begin{gather*}
+  {\bf{Q}}_{\xi}=
+  \dfrac{\partial {\bf{Q}}}{\partial \xi},\ {\bf{Q}}_{\eta} =
+  \dfrac{\partial {\bf{Q}}}{\partial \eta},\ {\bf{Q}}_{\zeta} =
+  \dfrac{\partial {\bf{Q}}}{\partial \zeta}, \notag \\ 
+  {\bf{G}}^1({\bf{Q}}_{\xi})\!=\!\left( \begin{array}{c}
+   0  \\
+   \left(\omega_1 +\dfrac{\partial \xi}{\partial x}S_x \right)\dfrac{\partial u}{\partial \xi} +
+   \dfrac{\partial \xi}{\partial x}S_y\dfrac{\partial v}{\partial \xi} + 
+   \dfrac{\partial \xi}{\partial x}S_z\dfrac{\partial w}{\partial \xi} \\
+   \dfrac{\partial \xi}{\partial y}S_x\dfrac{\partial u}{\partial \xi} + 
+   \left(\omega_1 +\dfrac{\partial \xi}{\partial y}S_y \right)\dfrac{\partial v}{\partial \xi} +
+   \dfrac{\partial \xi}{\partial y}S_z\dfrac{\partial w}{\partial \xi} \\
+   \dfrac{\partial \xi}{\partial z}S_x\dfrac{\partial u}{\partial \xi} + 
+   \dfrac{\partial \xi}{\partial z}S_y\dfrac{\partial v}{\partial \xi} +
+   \left(\omega_1 +\dfrac{\partial \xi}{\partial z}S_z \right)\dfrac{\partial w}{\partial \xi} \\
+  \end{array} \right), \notag \\  
+  {\bf{G}}^2({\bf{Q}}_{\eta})\!=\!\left( \begin{array}{c}
+   0  \\
+   \left(\omega_2 +\dfrac{\partial \eta}{\partial x}S_x \right)\dfrac{\partial u}{\partial \eta} +
+   \dfrac{\partial \eta}{\partial x}S_y\dfrac{\partial v}{\partial \eta} + 
+   \dfrac{\partial \eta}{\partial x}S_z\dfrac{\partial w}{\partial \eta} \\
+   \dfrac{\partial \eta}{\partial y}S_x\dfrac{\partial u}{\partial \eta} + 
+   \left(\omega_2 +\dfrac{\partial \eta}{\partial y}S_y \right)\dfrac{\partial v}{\partial \eta} +
+   \dfrac{\partial \eta}{\partial y}S_z\dfrac{\partial w}{\partial \eta} \\
+   \dfrac{\partial \eta}{\partial z}S_x\dfrac{\partial u}{\partial \eta} + 
+   \dfrac{\partial \eta}{\partial z}S_y\dfrac{\partial v}{\partial \eta} +
+   \left(\omega_2 +\dfrac{\partial \eta}{\partial z}S_z \right)\dfrac{\partial w}{\partial \eta} \\
+  \end{array} \right), \\
+  {\bf{G}}^3({\bf{Q}}_{\zeta})\!=\!\left( \begin{array}{c}
+   0  \\
+   \left(\omega_3 +\dfrac{\partial \zeta}{\partial x}S_x \right)\dfrac{\partial u}{\partial \zeta} +
+   \dfrac{\partial \zeta}{\partial x}S_y\dfrac{\partial v}{\partial \zeta} + 
+   \dfrac{\partial \zeta}{\partial x}S_z\dfrac{\partial w}{\partial \zeta} \\
+   \dfrac{\partial \zeta}{\partial y}S_x\dfrac{\partial u}{\partial \zeta} + 
+   \left(\omega_3 +\dfrac{\partial \zeta}{\partial y}S_y \right)\dfrac{\partial v}{\partial \zeta} +
+   \dfrac{\partial \zeta}{\partial y}S_z\dfrac{\partial w}{\partial \zeta} \\
+   \dfrac{\partial \zeta}{\partial z}S_x\dfrac{\partial u}{\partial \zeta} + 
+   \dfrac{\partial \zeta}{\partial z}S_y\dfrac{\partial v}{\partial \zeta} +
+   \left(\omega_3 +\dfrac{\partial \zeta}{\partial z}S_z \right)\dfrac{\partial w}{\partial \zeta} \\
+  \end{array} \right). 
+\end{gather*}
+Далее находим матрицы Якоби выписанных составляющих вектора вязкого потока
+\begin{equation}
+  {\bf{R}}^k =\dfrac{\partial {\bf{G}}^k}{\partial {\bf{Q}}_\gamma} = \left( {\begin{array}{*{20}c}
+  0 & 0 & 0 & 0 \\
+  0 & \omega_k+\dfrac{\partial \gamma}{\partial x}S_x & \dfrac{\partial \gamma}{\partial x}S_y & 
+      \dfrac{\partial \gamma}{\partial x}S_z \\
+  0 & \dfrac{\partial \gamma}{\partial y}S_x & \omega_k+\dfrac{\partial \gamma}{\partial y}S_y & 
+      \dfrac{\partial \gamma}{\partial y}S_z\\
+  0 & \dfrac{\partial \gamma}{\partial z}S_x & \dfrac{\partial \gamma}{\partial z}S_y &  
+      \omega_k+\dfrac{\partial \gamma}{\partial z}S_z 
+  \end{array}} \right),
+\end{equation}
+где $\gamma = \xi$ для $k=1$, $\gamma = \eta$ для $k=2$ и $\gamma = \zeta$ для $k=3$.
